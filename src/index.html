@@ -6,18 +6,18 @@
     <title>Mini My List</title>
 </head>
 <body>
-    <header>
-        <img src=<%=require("./pen.svg")%> />
+    <div class="header">
         <h1>MINI-MY-LIST</h1>
-        <img src=<%=require("./quill.svg")%> />
-    </header>
+        <button class="trigger-sidebar"><img src=<%=require("./menu.svg")%> /></button>
+    </div>
     <div class="container">
-        <div class="section-one">
-        </div>
-        <div class="section-two">
-            <div class="daily"></div>
-            <div class="weekly"></div>
-        </div>
+        <dialog>
+            <nav>
+                <h1>Your Projects</h1>
+            </nav>
+        </dialog>
+        <main>
+        </main>
     </div>
 </body>
 </html>
