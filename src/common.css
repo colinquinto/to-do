@@ -1,5 +1,4 @@
 body {
-    background-color: var(--bg-color);
     height: calc(100vh - 48px);
 }
     
@@ -9,17 +8,21 @@ body {
 }
 
 :root {
-    --color-one: #164e63;
-    --color-two: #fff;
-    --color-three: #a5f3fc;
-    --bg-color: #d1d5db;
+    --background-one: #3b82f6;
+    --background-two: #93c5fd;
+    --background-pos: #34d399;
+    --background-neg: #ef4444;
+    --hover-pos: #a7f3d0;
+    --hover-neg: #f87171;
+    --text-white: #ffffff;
+    --text-black: #000000;
     font-family: main-font;
 }
 
 .header {
     min-width: 100%;
-    background-color: #fff;
-    color: var(--color-one);
+    background-color: var(--background-one);
+    color: var(--text-white);
     display: flex;
     justify-content: center;
     padding: 0 20px;
@@ -30,6 +33,12 @@ body {
     border: none;
     cursor: pointer;
     justify-self: flex-end;
+    user-select: none;
+    outline: none;
+}
+
+.header > button > * {
+    pointer-events: none;
 }
 
 .header > h1 {
@@ -40,28 +49,11 @@ body {
 }
 
 .container {
+    width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 0;
-    overflow: auto;
 }
 
-dialog {
-    width: 350px;
-    height: calc(100% - 48px);
-    border: none;
-    background-color: var(--color-one);
-    color: var(--color-two);
-    justify-self: end;
-    padding: 10px;
-}
-
-nav > h1 {
-    text-align: center;
-}
-
-main {
-    width: 100%;
-}
 
