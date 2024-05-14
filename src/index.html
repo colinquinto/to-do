@@ -11,9 +11,20 @@
         <button class="trigger-sidebar"><img src=<%=require("./menu.svg")%> /></button>
     </div>
     <div class="container">
-        <dialog>
+        <dialog class="sidebar">
             <nav>
-                <h1>Your Projects</h1>
+                <img class="close-sidebar" src=<%=require("./close.svg")%> />
+                <h1>PROJECTS</h1>
+                <button class="add-project">+New</button>
+                <dialog class="add-project-dialog">
+                    <input class="proj-title-input" type="text" placeholder="New Project Title">
+                    <button class="cancel-project">Cancel</button>
+                    <button class="confirm-project">Confirm</button>
+                </dialog>
+                <div class="proj-container">
+                    <button class="active">Project Sample</button>
+                    <button class="delete"><img src=<%=require("./del.svg")%> /></button>
+                </div>
             </nav>
         </dialog>
         <main>
