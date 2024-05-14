@@ -1,16 +1,42 @@
 const sidebarModalFunction = () => {
-    const getSidebarBtn = document.querySelector(".trigger-sidebar");
-    const getDialog = document.querySelector("dialog");
+    const sidebar = document.querySelector(".sidebar");
+    const addProjectDialog = document.querySelector(".add-project-dialog");
+    const burgerMenu = document.querySelector(".trigger-sidebar");
+    const closeBtn = document.querySelector(".close-sidebar");
 
-    window.innerWidth < 800 ? getDialog.close() : getDialog.show();
+    // If the initial screen width on page load
+    // is less than 900
+    // hide the sidebar
+    window.innerWidth < 900 ? sidebar.close() : sidebar.show();
 
+    // If the user is resizing the window
+    // and it reaches a width of less than 900
+    // close the sidebar and add project dialog
     window.onresize = () => {
-        window.innerWidth < 800 ? getDialog.close() : getDialog.show();
+        if (window.innerWidth < 900) {
+            addProjectDialog.close();
+            sidebar.close()
+        } 
+        else { 
+            sidebar.show()
+        };
     }
     
-    getSidebarBtn.addEventListener("click", () => {
-        getDialog.open ? getDialog.close() : getDialog.show();
+    burgerMenu.addEventListener("click", () => {
+        if (sidebar.open) {
+            addProjectDialog.close();
+            sidebar.close();
+        }
+        else {
+            sidebar.show();
+        }
     })
+
+    closeBtn.addEventListener("click", () => {
+        addProjectDialog.close();
+        sidebar.close()
+    })
+
 };
 
 export { sidebarModalFunction }
