@@ -5,6 +5,9 @@ import './main-content.css';
 
 import { sidebarModalFunction } from './sidebar-control';
 import { NewProjectFunction } from './add-project';
+import { landingProject } from './landing';
 
 sidebarModalFunction();
 NewProjectFunction();
+landingProject;
+
