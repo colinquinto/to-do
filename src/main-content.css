@@ -1,4 +1,67 @@
 main {
     width: 100%;
-    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
 }
+
+main > h1, h2 {
+    width: 100%;
+    align-items: start;
+}
+
+main > div {
+    justify-items: center;
+    flex: 1;
+    width: 300px;
+    max-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    justify-content: space-between;
+    border: 1px solid;
+    border-left: 15px solid var(--main-red);
+}
+
+main > * {
+    width: 100%;
+}
+
+main > div > p {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+main > div > :nth-child(4) {
+    padding-bottom: 5px;
+    border-bottom: 1px solid;
+}
+
+main > div > button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mark-done {
+    background-color: var(--main-green);
+}
+
+.view-task {
+    background-color: var(--main-blue);
+}
+
+.edit-task {
+    background-color: var(--main-yellow);
+}
+
+.delete-task {
+    background-color: var(--main-red);
+}
+
