@@ -1,9 +1,9 @@
 .sidebar {
     width: 400px;
     max-width: 100%;
-    height: calc(100% - 48px);
+    height: 100%;
     border: none;
-    background-color: var(--background-two);
+    background-color: var(--light-blue);
     justify-self: end;
     padding: 10px;
     color: var(--text-black);
@@ -34,7 +34,8 @@ nav > h1 {
 }
 
 .add-project {
-    background-color: var(--background-pos);
+    width: 70px;
+    background-color: var(--main-green);
     color: var(--text-black);
     border-radius: 5px;
     border: none;
@@ -51,7 +52,7 @@ nav > h1 {
 }
 
 .add-project:hover {
-    background-color: var(--hover-pos);
+    background-color: var(--light-green);
 }
 
 .proj-container {
@@ -75,12 +76,12 @@ nav > h1 {
 
 .proj-container > button:hover, .proj-container > .active {
     cursor: pointer;
-    background-color: var(--background-one);
+    background-color: var(--main-blue);
     color: var(--text-white);
 }
 
 .proj-container > .delete {
-    background-color: var(--background-neg);
+    background-color: var(--main-red);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,13 +91,13 @@ nav > h1 {
 }
 
 .proj-container > .delete:hover {
-    background-color: var(--hover-neg);
+    background-color: var(--light-red);
 }
 
 .add-project-dialog {
     width: 100%;
     border: none;
-    background-color: var(--background-two);
+    background-color: var(--light-blue);
     text-align: center;
     margin-top: 35px;
     padding: 5px;
@@ -106,30 +107,28 @@ nav > h1 {
 .add-project-dialog > input {
     width: 100%;
     font-size: 1.3rem;
+    border-radius: 5px;
+    border: none;
     margin: 5px 0;
     padding: 2px 10px;
     outline: none;
 }
 
 .add-project-dialog > button {
-    font-size: 1rem;
-}
-
-.cancel-project, .confirm-project {
     border: 1px solid;
     padding: 2px 10px;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .cancel-project {
-    background-color: var(--background-neg);
+    background-color: var(--main-red);
     color: var(--text-white);
     float: left;
 }
 
 .confirm-project {
-    background-color: var(--background-pos);
+    background-color: var(--main-green);
     float: right;
 }
 
