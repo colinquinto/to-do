@@ -5,7 +5,7 @@ import viewSvg from './view.svg';
 const landingProject = (() => {
     const sampleProject = {
         title: "Project Sample",
-        desc: "This is a sample project",
+        desc: "Tasks",
         tasks: [
             {
                 title: "Task sample",
@@ -21,7 +21,7 @@ const landingProject = (() => {
             }
         ]
     }
-
+    localStorage.setItem("Project Sample", JSON.stringify(sampleProject))
     const main = document.querySelector("main"),
           projectTitle = document.createElement("h1"),
           projectDescription = document.createElement("h2");
@@ -52,6 +52,9 @@ const landingProject = (() => {
         taskDescription.textContent = "Description: " + tasks.desc;
         taskDue.textContent = "Due Date: " + tasks.due;
         taskPriority.textContent = "Priority: " + tasks.prio;
+        taskViewBtn.textContent = "View";
+        taskEditBtn.textContent = "Edit";
+        taskDeleteBtn.textContent = "Delete"
         
         taskDoneBtn.setAttribute("class", "mark-done");
         taskDoneBtn.textContent = "Mark as Done";
