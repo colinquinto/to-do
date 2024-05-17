@@ -5,7 +5,6 @@
     border: none;
     background-color: var(--light-blue);
     justify-self: end;
-    padding: 10px;
     color: var(--text-black);
     outline: none;
 }
@@ -46,6 +45,7 @@ nav > h1 {
     font-size: 1.1rem;
     font-weight: 500;
     margin: 10px 0;
+    margin-bottom: 30px;
     padding: 5px 10px;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -56,31 +56,38 @@ nav > h1 {
 }
 
 .proj-container {
-    margin-top: 20px;
-    padding: 10px 0;
+    max-height: 700px;
     width: 100%;
-    border-top: 1px solid;
-    display: grid;
-    grid-template: 1fr / 90% 10%;
-    gap: 20px 0;
+    overflow: auto;
 }
 
-.proj-container > button {
+.proj-container > div {
+    padding: 10px;
+    width: 100%;
+    border-top: 1px solid;
+    display: flex;
+}
+
+.proj-container > div > button {
     background: none;
     border: none;
     border-radius: 5px 0 0 5px;
     font-size: 1.5rem;
     text-align: justify;
     padding-left: 10px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.proj-container > button:hover, .proj-container > .active {
+.proj-container > div > button:hover, .proj-container > div > .active {
     cursor: pointer;
     background-color: var(--main-blue);
     color: var(--text-white);
 }
 
-.proj-container > .delete {
+.proj-container > div > .delete {
     background-color: var(--main-red);
     display: flex;
     align-items: center;
@@ -88,9 +95,10 @@ nav > h1 {
     border-radius: 0 5px 5px 0;
     border: none;
     padding: 0;
+    width: 10%;
 }
 
-.proj-container > .delete:hover {
+.proj-container > div >.delete:hover {
     background-color: var(--light-red);
 }
 
