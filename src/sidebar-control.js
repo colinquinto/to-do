@@ -1,4 +1,4 @@
-import { renderTasks } from "./display-tasks";
+import { taskComponents } from "./display-tasks";
 
 const sidebarModalFunction = () => {
     const sidebar = document.querySelector(".sidebar");
@@ -42,27 +42,52 @@ const sidebarModalFunction = () => {
 };
 
 const sidebarProjectsEvent = () => {
+    const sidebar = document.querySelector(".sidebar");
     const projectBtns = document.querySelectorAll(".proj-container>div>button");
     projectBtns.forEach((project) => {
         project.addEventListener("click", (e) => {
            
             const getProject = JSON.parse(localStorage.getItem(e.target.textContent));
+            const deleteConfirm = document.querySelector(".confirm-delete");
+
             if (e.target.classList.value === "delete") {
-               if (confirm("DELETING THIS PROJECT WILL ALSO REMOVE THE TASKS INSIDE IT \n\nPROCEED?")) {
                 const parent = e.target.parentElement;
                 const itemToDelete = parent.querySelector("button");
-                parent.remove();
-                localStorage.removeItem(itemToDelete.textContent);
-               }
-               else {
+                if (itemToDelete.textContent === "-Project Sample") {
+                    return
+                }
+                else if (deleteConfirm) {
+                    const getProjectName = document.querySelector(".confirm-delete > h1")
+                    getProjectName.textContent = itemToDelete.textContent;
+                    deleteConfirm.showModal();
 
-               }
+                    const cancelDelete = document.querySelector(".confirm-delete > #cancel");
+                    cancelDelete.addEventListener("click", () => deleteConfirm.close())
+
+                    const confirmDelete = document.querySelector(".confirm-delete > #confirm");
+                    confirmDelete.addEventListener("click", () => {
+                        parent.remove();
+                        localStorage.removeItem(itemToDelete.textContent)
+                        deleteConfirm.close();
+                        location.reload();
+                    })
+                }
             }
             else {
                 const getProjects = document.querySelectorAll(".projects > button");
-                getProjects.forEach((active) => { active.classList.remove("active") })
+                getProjects.forEach((active) => { 
+                    active.classList.remove("active")
+                    if (active.style.visibility === "visible") {
+                        active.style.visibility = "hidden"
+                    }
+                })
+                const showDeleteOnActive = e.target.parentElement.querySelector(".delete");
                 e.target.setAttribute("class", "active");
-                renderTasks(getProject);
+                showDeleteOnActive.style.visibility = "visible";
+
+                const newProject = new taskComponents(getProject.title, getProject.tasks);
+                newProject.renderTitle();
+                newProject.renderTasks();
             }
         })
     })
