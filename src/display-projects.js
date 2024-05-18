@@ -21,12 +21,19 @@ const createProjectElements = (project) => {
     const deleteIcon = new Image();
 
       projectDiv.setAttribute("class", "projects")
-      if (project === "Project Sample"){
+      if (project === "-Project Sample"){
         projectName.setAttribute("class", "active")
+        deleteBtn.style.visibility = "visible";
       }
       projectName.textContent = project;
       deleteIcon.src = deleteSvg;
-      deleteBtn.setAttribute("class", "delete")
+      deleteBtn.setAttribute("class", "delete");
+      if (project === "-Project Sample"){
+        deleteBtn.style.visibility = "visible";
+      }
+      else {
+        deleteBtn.style.visibility = "hidden";
+      }
       deleteBtn.append(deleteIcon);
 
       projectDiv.append(
