@@ -10,23 +10,22 @@
         <h1>MINI-MY-LIST</h1>
         <button class="trigger-sidebar"><img src=<%=require("./menu.svg")%> /></button>
     </div>
+    <dialog class="sidebar">
+        <nav>
+            <img class="close-sidebar" src=<%=require("./close.svg")%> />
+            <h1>PROJECTS</h1>
+            <button class="add-project">+New</button>
+            <dialog class="add-project-dialog">
+                <input class="proj-title-input" type="text" placeholder="New Project Title">
+                <button class="cancel-project">Cancel</button>
+                <button class="confirm-project">Confirm</button>
+            </dialog>
+            <div class="proj-container">
+            </div>
+        </nav>
+    </dialog>
     <div class="container">
-        <dialog class="sidebar">
-            <nav>
-                <img class="close-sidebar" src=<%=require("./close.svg")%> />
-                <h1>PROJECTS</h1>
-                <button class="add-project">+New</button>
-                <dialog class="add-project-dialog">
-                    <input class="proj-title-input" type="text" placeholder="New Project Title">
-                    <button class="cancel-project">Cancel</button>
-                    <button class="confirm-project">Confirm</button>
-                </dialog>
-                <div class="proj-container">
-                </div>
-            </nav>
-        </dialog>
-        <main>
-        </main>
+        <main></main>
     </div>
 </body>
 </html>
