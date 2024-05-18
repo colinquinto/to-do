@@ -5,6 +5,11 @@ main {
     text-align: center;
 }
 
+main > h1 {
+    border-bottom: 2px dashed;
+
+}
+
 main > h1, h2 {
     width: 100%;
 }
@@ -14,7 +19,6 @@ main > h1, h2 {
     align-items: center;
     justify-items: center;
     text-align: center;
-    border-bottom: 1px solid;
 }
 
 .new-task > button {
