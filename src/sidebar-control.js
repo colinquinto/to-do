@@ -1,3 +1,5 @@
+import { renderTasks } from "./display-tasks";
+
 const sidebarModalFunction = () => {
     const sidebar = document.querySelector(".sidebar");
     const addProjectDialog = document.querySelector(".add-project-dialog");
@@ -39,4 +41,31 @@ const sidebarModalFunction = () => {
 
 };
 
-export { sidebarModalFunction }
+const sidebarProjectsEvent = () => {
+    const projectBtns = document.querySelectorAll(".proj-container>div>button");
+    projectBtns.forEach((project) => {
+        project.addEventListener("click", (e) => {
+           
+            const getProject = JSON.parse(localStorage.getItem(e.target.textContent));
+            if (e.target.classList.value === "delete") {
+               if (confirm("DELETING THIS PROJECT WILL ALSO REMOVE THE TASKS INSIDE IT \n\nPROCEED?")) {
+                const parent = e.target.parentElement;
+                const itemToDelete = parent.querySelector("button");
+                parent.remove();
+                localStorage.removeItem(itemToDelete.textContent);
+               }
+               else {
+
+               }
+            }
+            else {
+                const getProjects = document.querySelectorAll(".projects > button");
+                getProjects.forEach((active) => { active.classList.remove("active") })
+                e.target.setAttribute("class", "active");
+                renderTasks(getProject);
+            }
+        })
+    })
+};
+
+export { sidebarModalFunction, sidebarProjectsEvent }
