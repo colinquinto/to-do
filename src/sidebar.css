@@ -72,10 +72,11 @@ nav > h1 {
 .proj-container > div > button {
     background: none;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px;
     font-size: 1.5rem;
     text-align: justify;
     padding-left: 10px;
+    margin-right: 5px;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -97,7 +98,7 @@ nav > h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
     border: none;
     padding: 0;
     width: 10%;
