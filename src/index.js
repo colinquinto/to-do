@@ -8,10 +8,10 @@ import { NewProjectFunction } from './add-project';
 import { landingProject } from './landing';
 import { renderProjectsToSidebar } from './display-projects';
 
-
 sidebarModalFunction();
 NewProjectFunction();
-landingProject;
 renderProjectsToSidebar();
 sidebarProjectsEvent();
+landingProject;
+
 // localStorage.clear()
