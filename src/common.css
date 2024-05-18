@@ -60,4 +60,89 @@ html, body {
     overflow: auto;
 }
 
+.confirm-delete, .task-modal {
+    max-width: 350px;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+}
 
+.confirm-delete > h1, h2 {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.confirm-delete > h2 {
+    font-size: 1.2rem;
+}
+
+.confirm-delete > button {
+    margin: 0 20px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--text-white);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.confirm-delete > #cancel {
+    background-color: #475569;
+}
+
+.confirm-delete > #confirm {
+    background-color: var(--main-red);
+
+}
+
+.task-modal > * {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.task-modal > #high, #low {
+    width: auto;
+    outline: none;
+    cursor: pointer;
+}
+
+.task-modal > #high {
+    accent-color: var(--main-red);
+}
+
+.task-modal > #low {
+    accent-color: var(--main-green);
+}
+
+.task-modal > label[for=high] {
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.task-modal > label[for=low] {
+    cursor: pointer;
+}
+
+.task-modal > .task-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.task-modal > .task-modal-buttons > button {
+    padding: 5px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.task-modal > div > #close {
+    background-color: var(--main-red);
+    color: var(--text-white);
+}
+
+.task-modal > div > #submit {
+    background-color: var(--main-green);
+}
