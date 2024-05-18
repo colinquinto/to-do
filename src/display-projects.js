@@ -1,6 +1,6 @@
 import deleteSvg from './del.svg';
 
-const renderProjects = () => {
+const renderProjectsToSidebar = () => {
     const storeLocalStorageKeys = [];
 
     for (let i = 0; i < localStorage.length; i++){
@@ -10,17 +10,21 @@ const renderProjects = () => {
 
     for (let j = 0; j < storeLocalStorageKeys.length; j++){
             createProjectElements(storeLocalStorageKeys[j])
-        } 
+        }
 }
 
-const createProjectElements = (element) => {
+const createProjectElements = (project) => {
     const projectContainer = document.querySelector(".proj-container");
-    const projectDiv = document.createElement("div"),
-    projectName = document.createElement("button"),
-    deleteBtn = document.createElement("button"),
-    deleteIcon = new Image();
+    const projectDiv = document.createElement("div");
+    const projectName = document.createElement("button");
+    const deleteBtn = document.createElement("button");
+    const deleteIcon = new Image();
 
-      projectName.textContent = element;
+      projectDiv.setAttribute("class", "projects")
+      if (project === "Project Sample"){
+        projectName.setAttribute("class", "active")
+      }
+      projectName.textContent = project;
       deleteIcon.src = deleteSvg;
       deleteBtn.setAttribute("class", "delete")
       deleteBtn.append(deleteIcon);
@@ -32,4 +36,4 @@ const createProjectElements = (element) => {
       projectContainer.append(projectDiv)
 }
 
-export { renderProjects,createProjectElements }
+export { renderProjectsToSidebar,createProjectElements }
