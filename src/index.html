@@ -27,5 +27,38 @@
     <div class="container">
         <main></main>
     </div>
+    <dialog class="confirm-delete">
+        <h2>Are you sure you want to delete</h2>
+        <h1></h1>
+        <h2>Deleting this project will also remove its tasks</h2>
+        <button id="cancel">Cancel</button>
+        <button id="confirm">Delete</button>
+    </dialog>
+    <dialog class="task-modal">
+        <h1>Add Task</h1>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="Task Title" />
+                
+            <label for="desc">Description:</label>
+            <input type="text" id="desc" name="desc" placeholder="Task Description" />
+                
+            <label for="due">Due Date:</label>
+            <input type="date" id="due" name="due" />
+                
+            <p>Priority:</p>
+
+            <input type="radio" id="high" name="prio" value="high" />
+            <label for="high">High</label>
+
+            <input type="radio" id="low" name="prio" value="low" />
+            <label for="low">Low</label>
+
+            <div class="task-modal-buttons">
+            <button id="close">Cancel</button>
+            <button id="submit">Submit</button>
+            </div>
+
+    </dialog>
 </body>
 </html>
