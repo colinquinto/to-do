@@ -97,52 +97,57 @@ html, body {
 
 }
 
-.task-modal > * {
+.task-modal > form > * {
     margin: 10px 0;
     width: 100%;
+    resize: none;
 }
 
-.task-modal > #high, #low {
+.task-modal > form > input, textarea {
+    padding: 5px;
+}
+
+.task-modal > form > #high, #low {
     width: auto;
     outline: none;
     cursor: pointer;
 }
 
-.task-modal > #high {
+.task-modal > form > #high {
     accent-color: var(--main-red);
 }
 
-.task-modal > #low {
+.task-modal > form > #low {
     accent-color: var(--main-green);
 }
 
-.task-modal > label[for=high] {
+.task-modal > form > label[for=high] {
     margin-right: 50px;
     cursor: pointer;
 }
 
-.task-modal > label[for=low] {
+.task-modal > form > label[for=low] {
     cursor: pointer;
 }
 
-.task-modal > .task-modal-buttons {
+.task-modal > form > .task-modal-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
 }
 
-.task-modal > .task-modal-buttons > button {
+.task-modal > form > .task-modal-buttons > button {
     padding: 5px 20px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
 }
 
-.task-modal > div > #close {
+.task-modal > form > div > #close {
     background-color: var(--main-red);
     color: var(--text-white);
 }
 
-.task-modal > div > #submit {
+.task-modal > form > div > #submit {
     background-color: var(--main-green);
 }
