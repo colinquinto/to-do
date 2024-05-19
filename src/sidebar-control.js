@@ -1,4 +1,5 @@
 import { taskComponents } from "./display-tasks";
+import { taskModalFunc } from "./add-task";
 
 const sidebarModalFunction = () => {
     const sidebar = document.querySelector(".sidebar");
@@ -23,6 +24,17 @@ const sidebarModalFunction = () => {
             sidebar.show()
         };
     }
+
+    if (sidebar.open) {
+        window.addEventListener("click", (e) => {
+            if (e.target === sidebar || e.target === burgerMenu) {
+                return
+            }
+            else{
+                sidebar.close();
+            }
+        })
+    }
     
     burgerMenu.addEventListener("click", () => {
         if (sidebar.open) {
@@ -42,12 +54,11 @@ const sidebarModalFunction = () => {
 };
 
 const sidebarProjectsEvent = () => {
-    const sidebar = document.querySelector(".sidebar");
-    const projectBtns = document.querySelectorAll(".proj-container>div>button");
+    const projectBtns = document.querySelectorAll(".proj-container > div > button");
     projectBtns.forEach((project) => {
         project.addEventListener("click", (e) => {
-           
-            const getProject = JSON.parse(localStorage.getItem(e.target.textContent));
+            e.preventDefault();
+            const main = document.querySelector("main")
             const deleteConfirm = document.querySelector(".confirm-delete");
 
             if (e.target.classList.value === "delete") {
@@ -84,11 +95,14 @@ const sidebarProjectsEvent = () => {
                 const showDeleteOnActive = e.target.parentElement.querySelector(".delete");
                 e.target.setAttribute("class", "active");
                 showDeleteOnActive.style.visibility = "visible";
-
+                
+                const getProject = JSON.parse(localStorage.getItem(e.target.textContent));
+                main.innerHTML = "";
                 const newProject = new taskComponents(getProject.title, getProject.tasks);
                 newProject.renderTitle();
                 newProject.renderTasks();
             }
+            taskModalFunc();
         })
     })
 };
