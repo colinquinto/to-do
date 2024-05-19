@@ -11,14 +11,7 @@ const NewProjectFunction = () => {
 
     const projectTemplate = {
         title: "",
-        tasks: [
-            {
-                title: "",
-                desc: "",
-                due: "",
-                prio: ""
-            },
-        ]
+        tasks: []
     }
 
     newProjectBtn.addEventListener("click", () => addProjectDialog.show())
@@ -28,16 +21,18 @@ const NewProjectFunction = () => {
         inputTitle.value = "";
     })
 
-    confirm.addEventListener("click", () => {
+    confirm.addEventListener("click", (e) => {
         if (inputTitle.value in localStorage) {
             alert("THIS PROJECT ALREADY EXISTS")
         }
-        else {
+        else if (inputTitle.checkValidity()) {
+            e.preventDefault();
             projectTemplate.title = inputTitle.value;
             localStorage.setItem(inputTitle.value, JSON.stringify(projectTemplate));
             createProjectElements(inputTitle.value);
             inputTitle.value = "";
             sidebarProjectsEvent();
+            addProjectDialog.close();
         }
     })
 }
