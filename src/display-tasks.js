@@ -12,7 +12,6 @@ class taskComponents {
     }
 
     renderTitle = () => {
-        this.main.innerHTML = "";
         const projectTitle = document.createElement("h1");
         const taskInitial = document.createElement("h2");
         const newTaskDiv = document.createElement("div");
@@ -32,15 +31,14 @@ class taskComponents {
             taskInitial,
             newTaskDiv
         );
-        getNewTask();
     }
 
     renderTasks = () => {
-        if (this.task[0].title === ""){
+        if (this.task[0] === ""){
             return
         }
         else {
-            for (let tasks of this.task) {
+        for (let tasks of this.task) {
           const taskContainer = document.createElement("div");
           const taskTitle = document.createElement("h3");
           const taskDescription = document.createElement("p");
