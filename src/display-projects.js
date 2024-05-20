@@ -1,46 +1,31 @@
-import deleteSvg from './del.svg';
+class renderProjectTitle {
+  main = document.querySelector("main");
 
-const renderProjectsToSidebar = () => {
-    const storeLocalStorageKeys = [];
+  constructor(project){
+      this.project = project;
+  }
 
-    for (let i = 0; i < localStorage.length; i++){
-        storeLocalStorageKeys.push(localStorage.key(i));
-        storeLocalStorageKeys.sort();
-    }
+  renderTitle = () => {
+    const projectTitle = document.createElement("h1");
+    const taskInitial = document.createElement("h2");
+    const newTaskDiv = document.createElement("div");
+    const createNewTask = document.createElement("button");
 
-    for (let j = 0; j < storeLocalStorageKeys.length; j++){
-            createProjectElements(storeLocalStorageKeys[j])
-        }
+    projectTitle.textContent = this.project;
+    taskInitial.textContent = "Tasks";
+
+    newTaskDiv.setAttribute("class", "new-task");
+    createNewTask.setAttribute("class", "new-task-button");
+    createNewTask.textContent = "Add Task";
+
+    newTaskDiv.append(createNewTask);
+
+    this.main.append(
+        projectTitle,
+        taskInitial,
+        newTaskDiv
+    );
+  }
 }
 
-const createProjectElements = (project) => {
-    const projectContainer = document.querySelector(".proj-container");
-    const projectDiv = document.createElement("div");
-    const projectName = document.createElement("button");
-    const deleteBtn = document.createElement("button");
-    const deleteIcon = new Image();
-
-      projectDiv.setAttribute("class", "projects")
-      if (project === "-Project Sample"){
-        projectName.setAttribute("class", "active")
-        deleteBtn.style.visibility = "visible";
-      }
-      projectName.textContent = project;
-      deleteIcon.src = deleteSvg;
-      deleteBtn.setAttribute("class", "delete");
-      if (project === "-Project Sample"){
-        deleteBtn.style.visibility = "visible";
-      }
-      else {
-        deleteBtn.style.visibility = "hidden";
-      }
-      deleteBtn.append(deleteIcon);
-
-      projectDiv.append(
-          projectName,
-          deleteBtn
-      )
-      projectContainer.append(projectDiv)
-}
-
-export { renderProjectsToSidebar,createProjectElements }
+export { renderProjectTitle }
