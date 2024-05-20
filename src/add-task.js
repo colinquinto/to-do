@@ -1,9 +1,11 @@
-import { taskComponents } from "./display-tasks";
+import { renderProjectTitle } from "./display-projects";
+import { renderProjectTasks } from "./display-tasks";
 
 const taskModalFunc = () => {
     const taskModal = document.querySelector(".task-modal");
     const newTaskBtn = document.querySelector(".new-task-button");
     const form = document.querySelector(".task-modal > form");
+    const date = document.querySelector(".task-modal > form > input[type=date]");
     const cancelNewTask = document.querySelector("#close");
     const submitTask = document.querySelector("#submit");
 
@@ -57,9 +59,12 @@ const submitToStorage = (proj, getTitle, getDesc, getDue, getPrio) => {
     const main = document.querySelector("main");
     main.innerHTML="";
     const getProject = JSON.parse(localStorage.getItem(proj));
-    const newProject = new taskComponents(getProject.title, getProject.tasks);
-    newProject.renderTitle();
-    newProject.renderTasks();
+
+    const projectTitle = new renderProjectTitle(getProject.title);
+    const addTask = new renderProjectTasks(getProject.tasks);
+
+    projectTitle.renderTitle();
+    addTask.renderTasks();
     taskModalFunc();
 }
 
