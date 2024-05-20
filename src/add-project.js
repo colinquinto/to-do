@@ -1,5 +1,5 @@
 
-import { createProjectElements } from './display-projects';
+import { createProjectElements } from './projects-to-sidebar';
 import { sidebarProjectsEvent } from './sidebar-control';
 
 const NewProjectFunction = () => {
