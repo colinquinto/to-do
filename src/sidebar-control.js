@@ -1,7 +1,9 @@
-import { taskComponents } from "./display-tasks";
+import { renderProjectTasks } from "./display-tasks";
+import { renderProjectTitle } from "./display-projects";
 import { taskModalFunc } from "./add-task";
 
 const sidebarModalFunction = () => {
+    const containerAll = document.querySelector(".container > *");
     const sidebar = document.querySelector(".sidebar");
     const addProjectDialog = document.querySelector(".add-project-dialog");
     const burgerMenu = document.querySelector(".trigger-sidebar");
@@ -27,10 +29,7 @@ const sidebarModalFunction = () => {
 
     if (sidebar.open) {
         window.addEventListener("click", (e) => {
-            if (e.target === sidebar || e.target === burgerMenu) {
-                return
-            }
-            else{
+            if (e.target === containerAll) {
                 sidebar.close();
             }
         })
@@ -98,9 +97,12 @@ const sidebarProjectsEvent = () => {
                 
                 const getProject = JSON.parse(localStorage.getItem(e.target.textContent));
                 main.innerHTML = "";
-                const newProject = new taskComponents(getProject.title, getProject.tasks);
-                newProject.renderTitle();
-                newProject.renderTasks();
+
+                const newProj = new renderProjectTitle(getProject.title)
+                const newTask = new renderProjectTasks(getProject.tasks);
+
+                newProj.renderTitle();
+                newTask.renderTasks();
             }
             taskModalFunc();
         })
