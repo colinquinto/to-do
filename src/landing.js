@@ -1,4 +1,6 @@
-import { taskComponents } from "./display-tasks";
+import { renderProjectTitle } from "./display-projects";
+import { renderProjectTasks } from "./display-tasks";
+import { format } from "date-fns";
 
 const landingProject = (() => {
     const sampleProject = {
@@ -7,16 +9,19 @@ const landingProject = (() => {
             {
                 title: "Task sample",
                 desc: "Task description",
-                due: "01-01-2111",
+                due: format(new Date(),"MMMM dd, yyyy"),
                 prio: "High"
             }
         ]
     }
     localStorage.setItem("-Project Sample", JSON.stringify(sampleProject));
     const getProject = JSON.parse(localStorage.getItem("-Project Sample"));
-    const renderSample = new taskComponents(getProject.title, getProject.tasks);
-    renderSample.renderTitle();
-    renderSample.renderTasks();
+
+    const sampleTitle = new renderProjectTitle(getProject.title);
+    const sampleTask = new renderProjectTasks(getProject.tasks);
+
+    sampleTitle.renderTitle();
+    sampleTask.renderTasks();
 })();
 
 export { landingProject };
