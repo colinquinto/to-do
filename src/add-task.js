@@ -11,6 +11,7 @@ const taskModalFunc = () => {
 
     if (newTaskBtn){newTaskBtn.addEventListener("click", () => {
         taskModal.showModal();
+        date.valueAsDate = new Date();
     })}
 
     cancelNewTask.addEventListener("click", cancelEvent);
@@ -18,7 +19,8 @@ const taskModalFunc = () => {
 
     return {
         taskModal,
-        form
+        form,
+        date
     }
     
 };
@@ -27,7 +29,6 @@ const submitEvent = (evt) => {
     if (taskModalFunc().form.checkValidity()) {
         evt.preventDefault();
         const projectName = document.querySelector("main > h1");
-        const projectData = JSON.parse(localStorage.getItem(projectName.textContent))
 
         const taskArr = [];
 
@@ -46,10 +47,10 @@ const submitEvent = (evt) => {
 
 const submitToStorage = (proj, getTitle, getDesc, getDue, getPrio) => {
     const projObj = {
-        title: getTitle,
+        title: getTitle.toLowerCase(),
         desc: getDesc,
         due: getDue,
-        prio: getPrio
+        prio: getPrio.toLowerCase()
     }
 
     const getProj = JSON.parse(localStorage.getItem(proj))
@@ -64,13 +65,13 @@ const submitToStorage = (proj, getTitle, getDesc, getDue, getPrio) => {
     const addTask = new renderProjectTasks(getProject.tasks);
 
     projectTitle.renderTitle();
+    addTask.renderNewTaskButton();
     addTask.renderTasks();
     taskModalFunc();
 }
 
 const cancelEvent = (e) => {
     e.preventDefault();
-    console.log("Cancelled")
     taskModalFunc().form.reset();
     taskModalFunc().taskModal.close();
 }
