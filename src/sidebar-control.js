@@ -102,6 +102,7 @@ const sidebarProjectsEvent = () => {
                 const newTask = new renderProjectTasks(getProject.tasks);
 
                 newProj.renderTitle();
+                newTask.renderNewTaskButton();
                 newTask.renderTasks();
             }
             taskModalFunc();
