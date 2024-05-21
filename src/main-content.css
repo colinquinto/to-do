@@ -7,6 +7,7 @@ main, .tasks {
 
 main > h1 {
     border-bottom: 2px dashed;
+    margin-bottom: 10px;
 }
 
 main > h1, h2 {
@@ -37,64 +38,101 @@ main > h1, h2 {
 }
 
 .tasks > div {
-    max-width: 300px;
+    width: 350px;
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin: 10px;
-    padding: 10px;
-    border-radius: 15px;
+    border-radius: 0 0 5px 5px;
     justify-content: space-between;
     align-content: center;
-    border: 1px solid;
+    border: 3px solid;
     text-align: justify;
 }
 
-.tasks > div > p {
-    width: 300px;
+.tasks > div > h3, p:nth-child(2) {
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.tasks > div > :nth-child(4) {
-    padding-bottom: 5px;
-    border-bottom: 1px solid;
+.tasks > div > p {
+    padding: 10px;
+    width: 100%;
 }
+
+.tasks > div > :nth-child(4) {
+    border-bottom: 3px solid;
+}
+
+/* Priority high task cards */
+.high > :nth-child(1) {
+    background-color: var(--main-red);
+    padding: 5px;
+    color: var(--text-white);
+}
+/* high end */
+
+/* Priority low task cards */
+.low > :nth-child(1) {
+    background-color: var(--main-green);
+    padding: 5px;
+}
+/* low end */
+
+/* Tasks that are marked as done */
+.done > :nth-child(1) {
+    background-color: var(--main-gray);
+    padding: 5px;
+    color: var(--text-white);
+}
+
+.done > .view-task, .done > .edit-task {
+    background-color: var(--main-gray);
+    pointer-events: none;
+}
+
+.done > h3, .done > p {
+    text-decoration: line-through;
+}
+/* done end */
+
 
 .tasks > div > button {
     margin-top: 10px;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
+    margin-bottom: 10px;
     cursor: pointer;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-}
-
-.tasks > div > button > img {
-    margin-right: 5px;
-    padding-right: 5px;
-    border-right: 1px solid;
+    justify-content: center;
 }
 
 .mark-done {
     justify-content: center;
-    width: 100%;
+    flex: 1;
     background-color: var(--main-green);
+    margin-left: 10px;
+    font-weight: bold;
 }
 
 .view-task {
     color: var(--text-white);
     background-color: var(--main-blue);
+    margin: 0 5px;
 }
 
 .edit-task {
     background-color: var(--main-yellow);
+    margin-right: 5px;
 }
 
 .delete-task {
     color: var(--text-white);
     background-color: var(--main-red);
+    margin-right: 10px;
 }
-
