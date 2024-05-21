@@ -7,10 +7,16 @@ const landingProject = (() => {
         title: "-Project Sample",
         tasks: [
             {
-                title: "Task sample",
+                title: "task sample high",
                 desc: "Task description",
-                due: format(new Date(),"MMMM dd, yyyy"),
-                prio: "High"
+                due: format(new Date(2025, 0, 1),"MMMM dd, yyyy"),
+                prio: "high"
+            },
+            {
+                title: "task sample low",
+                desc: "Task description",
+                due: format(new Date(2025, 0, 1),"MMMM dd, yyyy"),
+                prio: "low"
             }
         ]
     }
@@ -21,6 +27,7 @@ const landingProject = (() => {
     const sampleTask = new renderProjectTasks(getProject.tasks);
 
     sampleTitle.renderTitle();
+    sampleTask.renderNewTaskButton();
     sampleTask.renderTasks();
 })();
 
