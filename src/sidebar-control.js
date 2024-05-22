@@ -22,9 +22,6 @@ const sidebarModalFunction = () => {
             addProjectDialog.close();
             sidebar.close()
         } 
-        else { 
-            sidebar.show()
-        };
     }
 
     if (sidebar.open) {
