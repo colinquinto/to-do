@@ -11,7 +11,7 @@ class renderProjectTasks {
         this.task = task;
     }
 
-    sortTaskArray = (a, b) => {
+    sortTaskArrayByDate = (a, b) => {
         if ( a.due < b.due ){
             return -1;
           }
@@ -23,7 +23,13 @@ class renderProjectTasks {
 
     storeTasks = () => {
         this.taskArr.push(this.task)
-        this.taskArr[0].sort( this.sortTaskArray );
+
+        // Sort by priority
+        // High > Low
+        this.taskArr[0].sort( (a, b) => a.prio.localeCompare(b.prio) )
+        // Then sort by date
+        this.taskArr[0].sort( this.sortTaskArrayByDate );
+        
     }
 
     renderNewTaskButton = () => {
@@ -69,11 +75,7 @@ class renderProjectTasks {
 
                 taskDescription.textContent = "Description: " + tasks.desc.charAt(0).toUpperCase() + tasks.desc.slice(1);
 
-                    taskDue.textContent = "Due Date: "
-                    + format(tasks.due, "MMMM dd, yyyy")
-                    + " ("
-                    + formatDistanceToNow(tasks.due).toUpperCase()
-                    + ")";
+                taskDue.textContent = "Due Date: " + format(tasks.due, "MMMM dd, yyyy")
 
                 taskPriority.textContent = "Priority: " + tasks.prio.charAt(0).toUpperCase() + tasks.prio.slice(1);
 
