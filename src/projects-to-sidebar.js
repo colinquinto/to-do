@@ -23,7 +23,7 @@ const createProjectElements = (project) => {
       projectDiv.setAttribute("class", "projects")
       if (project === "-Project Sample"){
         projectName.setAttribute("class", "active")
-        deleteBtn.style.visibility = "visible";
+        deleteBtn.style.display = "none";
       }
       projectName.textContent = project;
       deleteIcon.src = deleteSvg;
