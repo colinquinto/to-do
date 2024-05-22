@@ -1,5 +1,6 @@
 import { renderProjectTitle } from "./display-projects";
 import { renderProjectTasks } from "./display-tasks";
+import { format } from "date-fns";
 
 const taskModalFunc = () => {
     const taskModal = document.querySelector(".task-modal");
@@ -11,6 +12,8 @@ const taskModalFunc = () => {
 
     if (newTaskBtn){newTaskBtn.addEventListener("click", () => {
         taskModal.showModal();
+        const formatToday = format(new Date(), "yyyy-MM-dd")
+        date.setAttribute("min", formatToday)
         date.valueAsDate = new Date();
     })}
 
@@ -76,4 +79,4 @@ const cancelEvent = (e) => {
     taskModalFunc().taskModal.close();
 }
 
-export { taskModalFunc };
+export { taskModalFunc, submitToStorage };
