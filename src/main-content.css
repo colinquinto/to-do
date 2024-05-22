@@ -8,6 +8,8 @@ main, .tasks {
 main > h1 {
     border-bottom: 2px dashed;
     margin-bottom: 10px;
+    padding: 10px;
+    text-transform: uppercase;
 }
 
 main > h1, h2 {
@@ -46,11 +48,21 @@ main > h1, h2 {
     border-radius: 0 0 5px 5px;
     justify-content: space-between;
     align-content: center;
-    border: 3px solid;
     text-align: justify;
+    text-align: center;
+    font-weight: bold;
 }
 
-.tasks > div > h3, p:nth-child(2) {
+.tasks > div > h3 {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+}
+
+.tasks > div > p:nth-child(2) {
+    font-weight: lighter;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -58,15 +70,23 @@ main > h1, h2 {
 }
 
 .tasks > div > p {
-    padding: 10px;
+    padding: 5px 10px;
     width: 100%;
+    font-size: 1.3rem;
 }
 
 .tasks > div > :nth-child(4) {
     border-bottom: 3px solid;
+    padding-bottom: 10px;
+    text-decoration: underline;
+    font-weight: lighter;
 }
 
 /* Priority high task cards */
+.high {
+    border: 3px solid var(--main-red);
+}
+
 .high > :nth-child(1) {
     background-color: var(--main-red);
     padding: 5px;
@@ -75,6 +95,10 @@ main > h1, h2 {
 /* high end */
 
 /* Priority low task cards */
+.low {
+    border: 3px solid var(--main-green);
+}
+
 .low > :nth-child(1) {
     background-color: var(--main-green);
     padding: 5px;
