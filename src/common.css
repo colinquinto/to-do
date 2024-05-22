@@ -61,14 +61,22 @@ html, body {
     overflow: auto;
 }
 
-.confirm-delete, .task-modal, .task-view-mode {
-    width: 350px;
+.confirm-delete,
+.task-modal,
+.task-view-mode,
+.confirm-task-complete,
+.edit-task-modal {
+    width: 450px;
     max-width: 100%;
-    padding: 20px;
+    padding: 15px;
     margin: auto;
     text-align: center;
     border: none;
     border-radius: 5px;
+}
+
+.confirm-delete {
+    border: 5px solid var(--main-red);
 }
 
 .confirm-delete > h1 {
@@ -107,69 +115,91 @@ html, body {
 
 }
 
-.task-modal > form > * {
+.task-modal {
+    border: 5px solid var(--main-green);
+}
+
+.edit-task-modal {
+    border: 5px solid var(--main-yellow);
+}
+
+.task-modal > form > *,
+.edit-task-modal > form > * {
     margin: 10px 0;
     width: 100%;
     resize: none;
 }
 
-.task-modal > form > input, textarea {
+.task-modal > form > input, textarea,
+.edit-task-modal > form > input, textarea {
     padding: 5px;
 }
 
-.task-modal > form > #high, #low {
+.task-modal > form > #high, #low,
+.edit-task-modal > form > #high, #low {
     width: auto;
     outline: none;
     cursor: pointer;
 }
 
-.task-modal > form > #high {
+.task-modal > form > #high,
+.edit-task-modal > form > #high {
     accent-color: var(--main-red);
 }
 
-.task-modal > form > #low {
+.task-modal > form > #low,
+.edit-task-modal > form > #low {
     accent-color: var(--main-green);
 }
 
-.task-modal > form > label[for=high] {
+.task-modal > form > label[for=high],
+.edit-task-modal > form > label[for=high] {
     margin-right: 50px;
-    cursor: pointer;
 }
 
-.task-modal > form > label[for=low] {
-    cursor: pointer;
-}
-
-.task-modal > form > .task-modal-buttons {
+.task-modal > form > .task-modal-buttons,
+.edit-task-modal > form > .task-modal-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
 }
 
-.task-modal > form > .task-modal-buttons > button {
+.task-modal > form > .task-modal-buttons > button,
+.edit-task-modal > form > .task-modal-buttons > button {
     padding: 5px 20px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
 }
 
-.task-modal > form > div > #close {
+.task-modal > form > div > #close,
+.edit-task-modal > form > div > #edit-close {
     background-color: var(--main-red);
     color: var(--text-white);
 }
 
-.task-modal > form > div > #submit {
+.task-modal > form > div > #submit,
+.edit-task-modal > form > div > #edit-submit {
     background-color: var(--main-green);
 }
 
+.task-view-mode {
+    border: 5px solid var(--main-blue);
+}
+
 .task-view-mode > *{
-    text-align: start;
+    text-align: center;
     width: 100%;
     padding: 10px 0;
 }
 
+.task-view-mode > :nth-child(2) {
+    font-weight: lighter;
+}
+
 .task-view-mode > :nth-child(4) {
     border-bottom: 1px solid;
+    font-weight: lighter;
 }
 
 .task-view-mode > button {
@@ -182,4 +212,33 @@ html, body {
     border-radius: 5px;
     border: none;
     cursor: pointer;
+}
+
+.confirm-task-complete {
+    border: 5px solid var(--main-green);
+}
+
+.confirm-task-complete > :nth-child(3) {
+    padding: 50px 0;
+    border-bottom: 1px solid;
+    text-decoration: underline;
+}
+
+.confirm-task-complete > button {
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+#cancel-complete {
+    float: left;
+    background-color: var(--main-gray);
+    color: var(--text-white);
+}
+
+#confirm-complete {
+    float: right;
+    background-color: var(--main-green);
 }
