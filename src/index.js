@@ -10,9 +10,16 @@ import { renderProjectsToSidebar } from './projects-to-sidebar';
 import { taskModalFunc } from './add-task';
 
 sidebarModalFunction();
+if (localStorage.length === 0 || "-Project Sample" in localStorage){
+    landingProject();
+}
+
+
 NewProjectFunction();
 renderProjectsToSidebar();
 sidebarProjectsEvent();
 taskModalFunc();
+
+document.querySelector(".projects > :nth-child(1)").click();
 
 // localStorage.clear()
