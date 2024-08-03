@@ -2,7 +2,7 @@ import { renderProjectTitle } from "./display-projects";
 import { renderProjectTasks } from "./display-tasks";
 import { format } from "date-fns";
 
-const landingProject = (() => {
+const landingProject = () => {
     const sampleProject = {
         title: "-Project Sample",
         tasks: [
@@ -29,6 +29,6 @@ const landingProject = (() => {
     sampleTitle.renderTitle();
     sampleTask.renderNewTaskButton();
     sampleTask.renderTasks();
-})();
+};
 
 export { landingProject };
