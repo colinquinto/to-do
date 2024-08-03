@@ -64,7 +64,7 @@ html, body {
 .confirm-delete,
 .task-modal,
 .task-view-mode,
-.confirm-task-complete,
+.confirm-task-delete,
 .edit-task-modal {
     width: 450px;
     max-width: 100%;
@@ -214,17 +214,15 @@ html, body {
     cursor: pointer;
 }
 
-.confirm-task-complete {
-    border: 5px solid var(--main-green);
+.confirm-task-delete {
+    border: 5px solid var(--main-red);
 }
 
-.confirm-task-complete > :nth-child(3) {
-    padding: 50px 0;
-    border-bottom: 1px solid;
-    text-decoration: underline;
+.confirm-task-delete > h2 {
+    padding: 10px 0;
 }
 
-.confirm-task-complete > button {
+.confirm-task-delete > button {
     padding: 5px 10px;
     cursor: pointer;
     margin-top: 20px;
@@ -240,5 +238,6 @@ html, body {
 
 #confirm-complete {
     float: right;
-    background-color: var(--main-green);
+    background-color: var(--main-red);
+    color: var(--text-white);
 }
