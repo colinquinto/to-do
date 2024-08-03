@@ -106,13 +106,18 @@ main > h1, h2 {
 /* low end */
 
 /* Tasks that are marked as done */
+
+.done {
+    border: 3px solid var(--main-gray);
+}
+
 .done > :nth-child(1) {
     background-color: var(--main-gray);
     padding: 5px;
     color: var(--text-white);
 }
 
-.done > .view-task, .done > .edit-task {
+.done > .edit-task {
     background-color: var(--main-gray);
     pointer-events: none;
 }
