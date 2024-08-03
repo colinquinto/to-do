@@ -11,7 +11,7 @@ const NewProjectFunction = () => {
 
     const projectTemplate = {
         title: "",
-        tasks: []
+        tasks: [],
     }
 
     newProjectBtn.addEventListener("click", () => addProjectDialog.show())
@@ -28,12 +28,16 @@ const NewProjectFunction = () => {
         else if (inputTitle.checkValidity()) {
             e.preventDefault();
             projectTemplate.title = inputTitle.value;
+            location.reload();
+            localStorage.removeItem("-Project Sample")
             localStorage.setItem(inputTitle.value, JSON.stringify(projectTemplate));
             createProjectElements(inputTitle.value);
             inputTitle.value = "";
             sidebarProjectsEvent();
             addProjectDialog.close();
+ 
         }
+  
     })
 }
 
