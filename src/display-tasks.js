@@ -1,5 +1,6 @@
 import editSvg from './edit.svg';
 import viewSvg from './view.svg';
+import delSvg from './del.svg';
 import { format, formatDistanceToNow } from "date-fns";
 import { addEventToTaskButtons } from './task-buttons-control';
 
@@ -67,9 +68,11 @@ class renderProjectTasks {
                 const taskDoneBtn = document.createElement("button");
                 const taskViewBtn = document.createElement("button");
                 const taskEditBtn = document.createElement("button");
+                const taskDeleteBtn = document.createElement("button");
                 
                 const viewIcon = new Image();
                 const editIcon = new Image();
+                const deleteIcon = new Image();
     
                 taskTitle.textContent = tasks.title.toUpperCase();
 
@@ -80,16 +83,27 @@ class renderProjectTasks {
                 taskPriority.textContent = "Priority: " + tasks.prio.charAt(0).toUpperCase() + tasks.prio.slice(1);
 
                 taskDoneBtn.setAttribute("class", "mark-done");
-                taskDoneBtn.textContent = "COMPLETE TASK";
+                
+                if (taskContainer.classList.value === "done") {
+                    taskDoneBtn.textContent = "UNDO MARK";
+                } 
+                else {
+                    taskDoneBtn.textContent = "MARK AS DONE";
+                }
+                
         
                 taskViewBtn.setAttribute("class", "view-task");
                 viewIcon.src = viewSvg;
 
                 taskEditBtn.setAttribute("class", "edit-task");
                 editIcon.src = editSvg;
+
+                taskDeleteBtn.setAttribute("class", "delete-task");
+                deleteIcon.src = delSvg;
         
                 taskViewBtn.append(viewIcon);
                 taskEditBtn.append(editIcon);
+                taskDeleteBtn.append(deleteIcon);
         
                 taskContainer.append(
                     taskTitle,
@@ -99,6 +113,7 @@ class renderProjectTasks {
                     taskDoneBtn,
                     taskViewBtn,
                     taskEditBtn,
+                    taskDeleteBtn
                 );
 
                 this.taskContainer.append(taskContainer)
