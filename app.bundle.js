@@ -3253,6 +3253,7 @@ const cancelEvent = (e) => {
 
 
 
+
 const addEventToTaskButtons = () => {
     const markAsDoneBtns = document.querySelectorAll(".mark-done");
     const viewTask = document.querySelectorAll(".view-task");
@@ -3260,7 +3261,7 @@ const addEventToTaskButtons = () => {
     const deleteTask = document.querySelectorAll(".delete-task");
 
     markAsDoneBtns.forEach((button) => {
-        button.addEventListener("click", completeTaskConfirmation)
+        button.addEventListener("click", markAsDone)
     })
 
     viewTask.forEach((button) => {
@@ -3275,13 +3276,29 @@ const addEventToTaskButtons = () => {
     })
 }
 
-const completeTaskConfirmation = (e) => {
-    
+const markAsDone = (e) => {
+    const project = document.querySelector("main > h1").textContent;
 
-}
+    const parent = e.currentTarget.parentElement;
+    const target = e.target;
 
-const taskCompleted = (e) => {
-   
+    const getproj = JSON.parse(localStorage.getItem(project));
+    const getTask = parent.querySelector("h3").textContent.toLowerCase();
+
+        for (let i = 0; i < getproj.tasks.length; i++) {
+            if (getproj.tasks[i].title === getTask.toLowerCase()){
+                if (parent.classList.value !== "done") {
+                    getproj.tasks[i].prio = "done";
+                }
+                else {
+                    getproj.tasks[i].prio = "high";
+                }
+            }
+        }
+
+        localStorage.setItem(project, JSON.stringify(getproj))
+        const updateTask = new renderProjectTasks(getproj.tasks)
+        updateTask.renderTasks();
 }
 
 const openViewTaskModal = (e) => {
@@ -3378,6 +3395,8 @@ const confirmTaskEdit = (e) => {
 }
 
 const deleteTaskFunc = (e) => {
+    const parent = e.currentTarget.parentElement;
+    const taskTitle = parent.querySelector("h3").textContent.toLowerCase();
 
     const completeTaskModal = document.querySelector(".confirm-task-delete")
     const completeTaskTitle = document.querySelector(".confirm-task-delete > h1")
@@ -3394,6 +3413,7 @@ const deleteTaskFunc = (e) => {
 const confirmDelete = (e) => {
     const projectTitle = document.querySelector("main > h1").textContent;
     const completeTaskModal = document.querySelector(".confirm-task-delete")
+    const completedTaskTitle = e.target.parentElement.querySelector("h1").textContent.toLowerCase()
 
     const projectInfo = JSON.parse(localStorage.getItem(projectTitle))
         
@@ -3500,7 +3520,14 @@ class renderProjectTasks {
                 taskPriority.textContent = "Priority: " + tasks.prio.charAt(0).toUpperCase() + tasks.prio.slice(1);
 
                 taskDoneBtn.setAttribute("class", "mark-done");
-                taskDoneBtn.textContent = "COMPLETE TASK";
+                
+                if (taskContainer.classList.value === "done") {
+                    taskDoneBtn.textContent = "UNDO MARK";
+                } 
+                else {
+                    taskDoneBtn.textContent = "MARK AS DONE";
+                }
+                
         
                 taskViewBtn.setAttribute("class", "view-task");
                 viewIcon.src = view_namespaceObject;
@@ -3666,7 +3693,7 @@ const sidebarProjectsEvent = () => {
                 
                 const getProject = JSON.parse(localStorage.getItem(e.target.textContent));
                 main.innerHTML = "";
-                
+
                 const newProj = new renderProjectTitle(getProject.title)
                 const newTask = new renderProjectTasks(getProject.tasks);
 
@@ -3688,12 +3715,11 @@ const renderProjectsToSidebar = () => {
 
     for (let i = 0; i < localStorage.length; i++){
         storeLocalStorageKeys.push(localStorage.key(i));
-        
+        storeLocalStorageKeys.sort();
     }
 
     for (let j = 0; j < storeLocalStorageKeys.length; j++){
             createProjectElements(storeLocalStorageKeys[j])
-            storeLocalStorageKeys.sort();
         }
 }
 
@@ -3743,7 +3769,6 @@ const NewProjectFunction = () => {
     const projectTemplate = {
         title: "",
         tasks: [],
-        order: ""
     }
 
     newProjectBtn.addEventListener("click", () => addProjectDialog.show())
@@ -3759,15 +3784,15 @@ const NewProjectFunction = () => {
         }
         else if (inputTitle.checkValidity()) {
             e.preventDefault();
-            localStorage.removeItem("-Project Sample");
             projectTemplate.title = inputTitle.value;
-            projectTemplate.order = localStorage.length+1;
+            location.reload();
+            localStorage.removeItem("-Project Sample")
             localStorage.setItem(inputTitle.value, JSON.stringify(projectTemplate));
             createProjectElements(inputTitle.value);
             inputTitle.value = "";
             sidebarProjectsEvent();
             addProjectDialog.close();
-            location.reload();
+ 
         }
   
     })
@@ -3787,10 +3812,10 @@ const NewProjectFunction = () => {
 
 
 sidebarModalFunction();
-
 if (localStorage.length === 0 || "-Project Sample" in localStorage){
     landingProject();
 }
+
 
 NewProjectFunction();
 renderProjectsToSidebar();
